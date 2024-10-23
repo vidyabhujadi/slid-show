@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Show</title>
+    <style>
+        .container{
+            width: fit-content;
+            margin:50px auto;
+            position: relative;
+        }
+        .slide{
+            height: 400px;
+            width:600px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .ico-action{
+            height: 50px;
+            position: absolute;
+            top: 40%;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .ico-left{
+            left: 0;
+            
+        }
+        .ico-left:hover{
+            transform: scale(0.8) translateX(-10px);
+
+        }
+        .ico-right{
+            right: 0;
+        
+        }
+        .ico-righ:hover{
+            transform: scale(0.8) translateX(10px);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="2.png" class="slide" id="slide"/>
+        <img src="left-arrow.png" class= "ico-action ico-left" onclick="prev()"/>
+        <img src="right-arrow.png" class= "ico-action ico-right" onclick="next()"/>
+
+
+    </div>
+    <script>
+        const images =[ "2.png","3.png","4.png","5.png","6.png"];
+        let index = 0;
+        const slide = document.getElementById('slide');
+
+
+        function next(){
+            if(index < images.length-1){
+                index++;
+            }
+            else{
+                index = 0;
+            }
+            
+            slide.src = images[index]
+}
+
+   function prev(){
+            if(index>0){
+                index--;
+            }
+            else{
+                index = images.length -1;
+            }
+            slide.src = images[index]
+}
+setInterval(next,2000);
+
+
+    </script>
+</body>
+</html>
